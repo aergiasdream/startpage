@@ -10,6 +10,7 @@ body {
 	font-family: 'Iosevka', 'Roboto', sans-serif;
 	background: #3375bb;
 	line-height: 1.2em;
+	margin: 0;
 }
 
 #search-field {
