@@ -2,14 +2,19 @@ document.addEventListener('keydown', keyHandle);
 
 function keyHandle(e) {
 	let pageOverlay = document.getElementById("overlay-container");
-	if (e.code == 'Backspace' && pageOverlay.classList.contains('hidden')) {
-		pageOverlay.classList.remove('hidden');
-		pageOverlay.classList.add('visible');
-		document.getElementById("search-field").focus();
+	let searchField = document.getElementById("search-field");
+	if (e.code == 'Backspace') {
+		if (pageOverlay.classList.contains('hidden')) {
+			pageOverlay.classList.remove('hidden');
+		}
+		searchField.value = "";
+		pageOverlay.classList.remove('hide');
+		pageOverlay.classList.add('show');
+		searchField.focus();
 	} else if (e.code == 'Escape') {
-		document.getElementById("clock").focus();
-		pageOverlay.classList.remove('visible');
-		pageOverlay.classList.add('hidden');
+		searchField.blur();
+		pageOverlay.classList.remove('show');
+		pageOverlay.classList.add('hide');
 	}
 }
 
@@ -28,11 +33,11 @@ function getTime() {
 
 function search(e) {
 	if (e.code == 'Enter') {
-		let searchEngineMenu = document.getElementById("search-engines");
-		let selectedSearchEngine = searchEngineMenu.options[searchEngineMenu.selectedIndex].value;
 		let searchTerm = document.getElementById("search-field").value;
 		if (searchTerm !== "") {
+			window.open("https://duckduckgo.com/?q=" + searchTerm, "_blank");
 			console.log(searchTerm);
+			searchTerm = "";
 		}
 	}
 }

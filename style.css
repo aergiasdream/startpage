@@ -17,7 +17,7 @@ body {
 	width: 100%;
 	height: 100vh;
 	background: #000022;
-	display: flex;
+	
 	overflow-x: hidden;
 	align-items: center;
 	justify-content: center;
@@ -28,7 +28,7 @@ body {
 }
 
 #search {
-	width: 100%;
+	width: 100vw;
 }
 
 #search-field {
@@ -131,25 +131,24 @@ a:hover {
 	color: #518fd0;
 }
 
-.hidden {
-	display: none;
-}
-
-.visible {
+.show {
 	animation-name: fadeIn;
 }
 
 @keyframes fadeIn {
-	0% {display: none; opacity: 0;}
-	1% {display: flex; opacity: 0;}
+	0% {opacity: 0;}
 	100% {opacity: 1;}
 }
 
-.hidden{
+.hide{
 	animation-name: fadeOut;
 }
 
 @keyframes fadeOut {
-	0% {opacity: 1}
-	100% {opacity: 0; z-index: -1;}
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+.hidden {
+	display: none;
 }
