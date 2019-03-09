@@ -2,16 +2,27 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-
-
 	<title>Startpage</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" href="favicon.svg">
 	<script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-	<div id="search">
-		<input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+	<div id="overlay-container" class="hidden">
+		<div id="search">
+			<input id="search-field" type="text" name="search-field" placeholder="Search DuckDuckGo..." onkeypress="search(event)"/>
+			<br>
+			<select id="search-engines">
+				<option value="duckduckgo" selected>DuckDuckGo</option>
+				<option value="google">Google</option>
+				<option value="bing">Bing</option>
+				<option value="custom">Custom</option>
+			</select>
+		</div>
+		<div id="second-pane">
+		</div>
+		<div id="third-pane">
+		</div>
 	</div>
 	<div class="container">
 		<div class="date-container">
@@ -48,9 +59,9 @@
 				<div class="bookmark-title">Reddit</div>
 				<div class="bookmark-list-container">
 					<a href="http://reddit.com/r/unixporn" target="_blank" rel="noopener">Unixporn</a>
+					<a href="http://reddit.com/r/unixprotips" target="_blank" rel="noopener">Unix Pro-tips</a>
 					<a href="http://reddit.com/r/freefolk" target="_blank" rel="noopener">Freefolk</a>
 					<a href="http://reddit.com/r/nhlstreams" target="_blank" rel="noopener">NHL Streams</a>
-					<a href="http://reddit.com/r/unixprotips" target="_blank" rel="noopener">Unix Pro-tips</a>
 				</div>
 			</div>
 			<div class="bookmark-section">
@@ -66,6 +77,7 @@
 
 			</div>
 		</div>
+		<span id="tip">Press backspace to open overlay</span>
 	</div>
 </body>
 </html>
