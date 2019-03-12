@@ -1,20 +1,28 @@
 document.addEventListener('keydown', keyHandle);
 
 function keyHandle(e) {
+	if (e.code == 'Backspace') {
+		modifyOverlay('show');
+	} else if (e.code == 'Escape') {
+		modifyOverlay('hide')
+	}
+}
+
+function modifyOverlay(e) {
 	let pageOverlay = document.getElementById("overlay-container");
 	let searchField = document.getElementById("search-field");
-	if (e.code == 'Backspace') {
-		if (pageOverlay.classList.contains('hidden')) {
-			pageOverlay.classList.remove('hidden');
-		}
-		searchField.value = "";
-		pageOverlay.classList.remove('hide');
-		pageOverlay.classList.add('show');
-		searchField.focus();
-	} else if (e.code == 'Escape') {
+	searchField.value = "";
+	if (e == 'hide') {
 		searchField.blur();
 		pageOverlay.classList.remove('show');
 		pageOverlay.classList.add('hide');
+	} else if (e == 'show') {
+		if (pageOverlay.classList.contains('hidden')) {
+			pageOverlay.classList.remove('hidden');
+		}
+		searchField.focus();
+		pageOverlay.classList.remove('hide');
+		pageOverlay.classList.add('show');
 	}
 }
 
@@ -36,8 +44,7 @@ function search(e) {
 		let searchTerm = document.getElementById("search-field").value;
 		if (searchTerm !== "") {
 			window.open("https://duckduckgo.com/?q=" + searchTerm, "_blank");
-			console.log(searchTerm);
-			searchTerm = "";
+			modifyOverlay('hide');
 		}
 	}
 }
